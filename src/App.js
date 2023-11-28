@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+// App.jsx
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './shared/components/Navbar';
+import Order from './order/pages/Order';
+import Product from './product/pages/Product';
+import Category from './category/pages/Category';
+import OrderList from './order/components/OrderList';
+import OrderAddProduct from './order/components/OrderAddProduct';
+import OrderUpdate from './order/components/OrderUpdate';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/orderid" element={<Order />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/category" element={<Category />} />
+        <Route path="/" element={<OrderList />} />
+        <Route path="/orderaddproduct" element={<OrderAddProduct />} />
+        <Route path="/orderupdate" element={<OrderUpdate />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
